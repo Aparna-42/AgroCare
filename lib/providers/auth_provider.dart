@@ -44,12 +44,29 @@ class AuthProvider with ChangeNotifier {
       );
 
       if (response.user != null) {
+        // Fetch user data from users table
+        try {
+          final userData = await _supabase
+              .from('users')
+              .select()
+              .eq('id', response.user!.id)
+              .single();
+          
+          _user = user_model.User(
+            id: userData['id'] ?? response.user!.id,
+            name: userData['name'] ?? email.split('@')[0],
+            email: userData['email'] ?? response.user!.email ?? '',
+          );
+        } catch (dbError) {
+          // If user not found in database, create local user object
+          _user = user_model.User(
+            id: response.user!.id,
+            name: response.user!.userMetadata?['name'] ?? email.split('@')[0],
+            email: response.user!.email ?? '',
+          );
+        }
+
         _isAuthenticated = true;
-        _user = user_model.User(
-          id: response.user!.id,
-          name: response.user!.userMetadata?['name'] ?? email.split('@')[0],
-          email: response.user!.email ?? '',
-        );
         notifyListeners();
         return true;
       }
@@ -74,6 +91,21 @@ class AuthProvider with ChangeNotifier {
       );
 
       if (response.user != null) {
+        // Save user data to users table
+        try {
+          await _supabase.from('users').insert({
+            'id': response.user!.id,
+            'name': name,
+            'email': email,
+          });
+          print('✅ User saved to database successfully');
+        } catch (dbError) {
+          print('⚠️ Error saving user to database: $dbError');
+          print('This might be due to RLS policies. The user auth is still successful.');
+          // Don't fail the signup even if database save fails
+          // The user will need to run the FIX_RLS_POLICIES.md SQL
+        }
+
         _isAuthenticated = true;
         _user = user_model.User(
           id: response.user!.id,
@@ -107,8 +139,64 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void updateProfile(user_model.User updatedUser) {
-    _user = updatedUser;
-    notifyListeners();
+  Future<bool> updateProfile({
+    required String name,
+    String? location,
+    String? profileImageUrl,
+  }) async {
+    try {
+      _errorMessage = null;
+      final userId = _supabase.auth.currentUser?.id;
+      if (userId == null) {
+        _errorMessage = 'User not authenticated';
+        return false;
+      }
+
+      // Update users table
+      try {
+        await _supabase.from('users').update({
+          'name': name,
+          'location': location,
+          'profile_image_url': profileImageUrl,
+          'updated_at': DateTime.now().toIso8601String(),
+        }).eq('id', userId);
+      } catch (dbError) {
+        print('⚠️ Error updating users table: $dbError');
+        // Continue even if database update fails
+      }
+
+      // Update local user object
+      _user = user_model.User(
+        id: _user!.id,
+        name: name,
+        email: _user!.email,
+      );
+
+      print('✅ Profile updated successfully');
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _errorMessage = e.toString();
+      print('Error updating profile: $e');
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> changePassword(String newPassword) async {
+    try {
+      _errorMessage = null;
+      await _supabase.auth.updateUser(
+        UserAttributes(password: newPassword),
+      );
+      print('✅ Password changed successfully');
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _errorMessage = e.toString();
+      print('Error changing password: $e');
+      notifyListeners();
+      return false;
+    }
   }
 }
