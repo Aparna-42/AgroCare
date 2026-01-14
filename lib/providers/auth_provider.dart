@@ -149,20 +149,38 @@ class AuthProvider with ChangeNotifier {
       final userId = _supabase.auth.currentUser?.id;
       if (userId == null) {
         _errorMessage = 'User not authenticated';
+        print('❌ Error: User not authenticated');
         return false;
       }
 
+      print('🔄 Updating profile for user: $userId');
+      print('   Name: $name, Location: $location');
+
       // Update users table
       try {
-        await _supabase.from('users').update({
+        final updateData = {
           'name': name,
-          'location': location,
-          'profile_image_url': profileImageUrl,
           'updated_at': DateTime.now().toIso8601String(),
-        }).eq('id', userId);
+        };
+        
+        if (location != null && location.isNotEmpty) {
+          updateData['location'] = location;
+        }
+        
+        if (profileImageUrl != null && profileImageUrl.isNotEmpty) {
+          updateData['profile_image_url'] = profileImageUrl;
+        }
+
+        await _supabase
+            .from('users')
+            .update(updateData)
+            .eq('id', userId);
+        
+        print('✅ Profile updated successfully in Supabase');
       } catch (dbError) {
         print('⚠️ Error updating users table: $dbError');
-        // Continue even if database update fails
+        _errorMessage = 'Database update failed: $dbError';
+        return false;
       }
 
       // Update local user object
@@ -172,12 +190,12 @@ class AuthProvider with ChangeNotifier {
         email: _user!.email,
       );
 
-      print('✅ Profile updated successfully');
+      print('✅ Profile updated in memory');
       notifyListeners();
       return true;
     } catch (e) {
       _errorMessage = e.toString();
-      print('Error updating profile: $e');
+      print('❌ Error updating profile: $e');
       notifyListeners();
       return false;
     }
