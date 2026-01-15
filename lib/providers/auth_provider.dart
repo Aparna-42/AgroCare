@@ -156,31 +156,56 @@ class AuthProvider with ChangeNotifier {
       print('🔄 Updating profile for user: $userId');
       print('   Name: $name, Location: $location');
 
-      // Update users table
-      try {
-        final updateData = {
-          'name': name,
-          'updated_at': DateTime.now().toIso8601String(),
-        };
-        
-        if (location != null && location.isNotEmpty) {
-          updateData['location'] = location;
-        }
-        
-        if (profileImageUrl != null && profileImageUrl.isNotEmpty) {
-          updateData['profile_image_url'] = profileImageUrl;
-        }
+      // Only update with non-null values to minimize RLS issues
+      final updateData = {
+        'id': userId,
+        'name': name,
+        'email': _supabase.auth.currentUser?.email ?? '',
+        'updated_at': DateTime.now().toIso8601String(),
+      };
+      
+      if (location != null && location.isNotEmpty) {
+        updateData['location'] = location;
+      }
+      
+      if (profileImageUrl != null && profileImageUrl.isNotEmpty) {
+        updateData['profile_image_url'] = profileImageUrl;
+      }
 
-        await _supabase
+      print('📤 Attempting update with data: $updateData');
+
+      try {
+        // Try UPDATE first (if user already exists)
+        final updateResponse = await _supabase
             .from('users')
             .update(updateData)
-            .eq('id', userId);
+            .eq('id', userId)
+            .select();
         
-        print('✅ Profile updated successfully in Supabase');
+        print('✅ UPDATE successful: $updateResponse');
+        
+        // If update returned nothing, try upsert
+        if (updateResponse.isEmpty) {
+          print('⚠️ UPDATE returned empty, trying upsert...');
+          final upsertResponse = await _supabase
+              .from('users')
+              .upsert(updateData, onConflict: 'id')
+              .select();
+          print('✅ UPSERT successful: $upsertResponse');
+        }
       } catch (dbError) {
-        print('⚠️ Error updating users table: $dbError');
-        _errorMessage = 'Database update failed: $dbError';
-        return false;
+        print('⚠️ UPDATE failed: $dbError, trying simple update without select...');
+        // Try without select() in case that's causing issues
+        await _supabase
+            .from('users')
+            .update({
+              'name': name,
+              'updated_at': DateTime.now().toIso8601String(),
+              if (location != null && location.isNotEmpty) 'location': location,
+              if (profileImageUrl != null && profileImageUrl.isNotEmpty) 'profile_image_url': profileImageUrl,
+            })
+            .eq('id', userId);
+        print('✅ Simple UPDATE successful');
       }
 
       // Update local user object
@@ -190,12 +215,13 @@ class AuthProvider with ChangeNotifier {
         email: _user!.email,
       );
 
-      print('✅ Profile updated in memory');
+      print('✅ Profile updated successfully');
       notifyListeners();
       return true;
     } catch (e) {
       _errorMessage = e.toString();
       print('❌ Error updating profile: $e');
+      print('   Type: ${e.runtimeType}');
       notifyListeners();
       return false;
     }

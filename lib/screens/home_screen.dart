@@ -87,27 +87,27 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               _buildFeatureButton(
                                 context,
+                                'Add Plant',
+                                Icons.add_circle,
+                                () => context.push('/add-plant'),
+                              ),
+                              _buildFeatureButton(
+                                context,
                                 'Plant Health',
                                 Icons.image_search,
-                                () => context.go('/plant-health'),
+                                () => context.push('/plant-health'),
                               ),
                               _buildFeatureButton(
                                 context,
                                 'Maintenance',
                                 Icons.schedule,
-                                () => context.go('/maintenance'),
+                                () => context.push('/maintenance'),
                               ),
                               _buildFeatureButton(
                                 context,
                                 'Weather',
                                 Icons.cloud,
-                                () => context.go('/weather'),
-                              ),
-                              _buildFeatureButton(
-                                context,
-                                'History',
-                                Icons.history,
-                                () => context.go('/crop-history'),
+                                () => context.push('/weather'),
                               ),
                             ],
                           ),
@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   PlantCard(
                                     plant: plant,
                                     onTap: () =>
-                                        context.go('/plant/${plant.id}'),
+                                        context.push('/plant/${plant.id}'),
                                   )),
                             ],
                           ),
@@ -188,13 +188,13 @@ class _HomeScreenState extends State<HomeScreen> {
               context.go('/home');
               break;
             case 1:
-              context.go('/plant-health');
+              context.push('/plant-health');
               break;
             case 2:
-              context.go('/weather');
+              context.push('/weather');
               break;
             case 3:
-              context.go('/profile');
+              context.push('/profile');
               break;
           }
         },

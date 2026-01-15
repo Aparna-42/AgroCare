@@ -92,7 +92,11 @@ class _SignupScreenState extends State<SignupScreen> {
         backgroundColor: primaryGreen,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+            }
+          },
         ),
         title: const Text('Create Account'),
       ),

@@ -1,10 +1,10 @@
-# agrocare_app
+# AgroCare - Smart Agriculture Management App
 
-A new Flutter project.
+A comprehensive Flutter application for managing crops, monitoring plant health, and providing agricultural insights using AI-powered plant identification.
 
-# AgroCare - Intelligent Plant Maintenance Platform
-
-An Android Flutter application designed to help users manage their plants and crops with intelligent disease detection, maintenance scheduling, weather-aware guidance, and comprehensive crop monitoring.
+**Version**: 1.0.0  
+**Last Updated**: January 14, 2026  
+**Status**: Active Development
 
 ## Project Overview
 
@@ -14,136 +14,217 @@ AgroCare is a smart agricultural application that provides end-to-end support fo
 - **Weather-Aware Guidance**: Real-time weather data for optimal crop management
 - **Crop Lifecycle Tracking**: Maintain detailed records of plant growth and health progress
 
-## Features
+## ✨ Features Implemented
 
-### 1. **Authentication System**
-- User login and registration
-- Secure session management
-- Profile management
+### 🔐 Authentication
+- ✅ Email/password authentication via Supabase
+- ✅ User registration with automatic profile creation
+- ✅ Secure login/logout functionality
+- ✅ Session persistence across app restarts
+- ✅ Password change functionality
 
-### 2. **Home Dashboard**
-- Overview of all plants
-- Quick stats (total plants, health status, pending tasks)
-- Quick access to main features
-- Upcoming maintenance tasks
+### 🌿 Plant Management
+- ✅ **AI-Powered Plant Identification**: Identify plants from photos using Plant.id API
+- ✅ **Add Plants**: Capture or select plant images and save to database
+- ✅ **Plant Library**: View all your plants with health status indicators
+- ✅ **Plant Details**: Comprehensive information including:
+  - Common name and scientific name
+  - Confidence score from AI identification
+  - Care instructions (watering, sunlight, temperature)
+  - Health status tracking
+  - Image gallery
 
-### 3. **Plant Health Analysis**
-- Upload or capture plant images
-- AI-powered disease detection (using CNN)
-- Health status assessment
-- Detailed treatment recommendations
-- Plant type identification
+### 👤 Profile Management
+- ✅ View and edit user profile
+- ✅ Update profile information (name, location)
+- ✅ Profile picture upload to Supabase Storage
+- ✅ Change password functionality
+- ✅ Profile data sync with Supabase
 
-### 4. **Maintenance Scheduler**
-- Smart maintenance scheduling
-- Task creation and management
-- Task filtering (all, pending, completed)
-- Automated reminders for watering, fertilization, and pruning
-- Historical task tracking
+### 🏠 Dashboard & Navigation
+- ✅ Beautiful home dashboard with statistics
+- ✅ Quick access feature buttons
+- ✅ Bottom navigation bar (Home, Plants, Weather, Profile)
+- ✅ Responsive Material Design 3 UI
+- ✅ Custom green theme for agricultural focus
 
-### 5. **Weather Advisory**
-- Real-time weather data integration
-- 5-day weather forecast
-- Agricultural weather advisories
-- UV index monitoring
-- Rainfall and humidity tracking
+### 🔧 Additional Features (UI Ready)
+- 🎨 Plant health monitoring screen
+- 🎨 Maintenance scheduler screen
+- 🎨 Weather advisory screen
+- 🎨 Crop history tracking screen
+- 🎨 Staggered grid layout for plant cards
 
-### 6. **Crop History & Monitoring**
-- Comprehensive crop lifecycle tracking
-- Historical data analysis
-- Plant growth progress monitoring
-- Disease history
-- Long-term trend analysis
-
-### 7. **User Profile**
-- Profile management
-- Account settings
-- App preferences
-- Support and information
-- Logout functionality
-
-## Project Structure
+## 📂 Project Structure
 
 ```
 agrocare_app/
 ├── lib/
-│   ├── main.dart                 # App entry point
+│   ├── main.dart                          # App entry point with Supabase init
 │   ├── config/
-│   │   ├── theme.dart           # App theme and colors
-│   │   └── router.dart          # Navigation routing
+│   │   ├── theme.dart                    # Material Design 3 theme
+│   │   └── router.dart                   # GoRouter navigation (12 routes)
 │   ├── models/
-│   │   ├── user.dart            # User model
-│   │   ├── plant.dart           # Plant model
-│   │   ├── weather_data.dart    # Weather model
-│   │   └── maintenance_task.dart # Task model
+│   │   ├── plant.dart                    # Plant model (updated for AI identification)
+│   │   └── maintenance_task.dart         # Task model
 │   ├── providers/
-│   │   ├── auth_provider.dart    # Authentication state
-│   │   ├── plant_provider.dart   # Plant management state
-│   │   └── maintenance_provider.dart # Task management state
+│   │   ├── auth_provider.dart            # Auth state (login, signup, profile)
+│   │   ├── plant_provider.dart           # Plant management state
+│   │   └── maintenance_provider.dart     # Task management state
 │   ├── screens/
-│   │   ├── splash_screen.dart         # Splash/Loading screen
-│   │   ├── login_screen.dart          # Login page
-│   │   ├── signup_screen.dart         # Registration page
-│   │   ├── home_screen.dart           # Main dashboard
-│   │   ├── plant_detail_screen.dart   # Individual plant details
-│   │   ├── plant_health_screen.dart   # Disease analysis
-│   │   ├── maintenance_scheduler_screen.dart # Task management
-│   │   ├── weather_advisory_screen.dart      # Weather info
-│   │   ├── crop_history_screen.dart          # History tracking
-│   │   └── profile_screen.dart               # User profile
+│   │   ├── splash_screen.dart            # Splash/Loading screen
+│   │   ├── login_screen.dart             # Login page
+│   │   ├── signup_screen.dart            # Registration page
+│   │   ├── home_screen.dart              # Main dashboard
+│   │   ├── add_plant_screen.dart         # ✨ NEW: AI plant identification
+│   │   ├── plant_detail_screen.dart      # Individual plant details
+│   │   ├── plant_health_screen.dart      # Disease analysis
+│   │   ├── maintenance_scheduler_screen.dart  # Task management
+│   │   ├── weather_advisory_screen.dart   # Weather info
+│   │   ├── crop_history_screen.dart       # History tracking
+│   │   └── profile_screen.dart            # User profile
+│   ├── services/
+│   │   └── plant_identification_service.dart  # ✨ NEW: Plant.id API
 │   ├── widgets/
-│   │   ├── custom_appbar.dart              # Custom AppBar
-│   │   ├── plant_card.dart                 # Plant card widget
-│   │   └── health_status_indicator.dart    # Health status widget
+│   │   ├── custom_appbar.dart            # Custom AppBar
+│   │   └── plant_card.dart               # Plant card widget
 │   └── utils/
-│       └── helpers.dart                    # Utility functions
-├── pubspec.yaml              # Dependencies
+│       └── helpers.dart                  # Utility functions
+├── pubspec.yaml                          # Dependencies
+└── README.md                             # This file
+```
 └── android/                  # Android native code
 ```
 
 ## Dependencies
 
-The app uses the following key packages:
+## 🛠️ Tech Stack
 
-- **provider**: State management
-- **go_router**: Navigation and routing
-- **google_fonts**: Typography
-- **http**: API requests
-- **image_picker**: Image capture and upload
-- **intl**: Internationalization
-- **shared_preferences**: Local storage
-- **flutter_staggered_grid_view**: Responsive layouts
-- **lottie**: Animations
+### Frontend
+- **Framework**: Flutter 3.38.6
+- **Language**: Dart 3.10.7
+- **UI**: Material Design 3
+- **Navigation**: go_router ^12.0.0
+- **State Management**: Provider pattern
 
-## Design & UI
+### Backend & Services
+- **Backend**: Supabase (PostgreSQL + Storage + Auth)
+- **Authentication**: Supabase Auth
+- **Database**: PostgreSQL via Supabase
+- **Storage**: Supabase Storage (S3-compatible)
+- **AI Service**: Plant.id API for plant identification
+
+### Key Dependencies
+```yaml
+dependencies:
+  # State Management
+  provider: ^6.0.0
+  
+  # Backend
+  supabase_flutter: ^1.10.0
+  
+  # Navigation
+  go_router: ^12.0.0
+  
+  # UI/UX
+  google_fonts: ^6.0.0
+  flutter_staggered_grid_view: ^0.7.0
+  lottie: ^2.6.0
+  
+  # Image handling
+  image_picker: ^1.0.0
+  
+  # HTTP requests
+  http: ^1.1.0
+  
+  # Utilities
+  shared_preferences: ^2.2.0
+  intl: ^0.19.0
+  uuid: ^4.0.0
+```
+
+## 🎨 Design System
 
 ### Color Scheme
-- **Primary Green**: #2D7A3E (Main brand color)
-- **Accent Green**: #4CAF50 (Highlights)
-- **Light Green**: #E8F5E9 (Backgrounds)
-- **Dark Green**: #1B5E20 (Text)
-- **Warm Brown**: #8D6E63 (Secondary)
-- **Error Red**: #E53935 (Critical alerts)
-- **Warning Orange**: #FFA726 (Warnings)
+- **Primary Green**: `#2D6A4F` - Main brand color
+- **Accent Green**: `#52B788` - Secondary actions
+- **Success Green**: `#40916C` - Success states
+- **Background**: `#F8F9FA` - App background
+- **Text Primary**: `#1B263B` - Primary text
+- **Text Gray**: `#6C757D` - Secondary text
 
 ### Typography
-- **Font Family**: Poppins
-- **Headlines**: Bold, 24-32px
-- **Body**: Regular, 12-16px
+- **Font Family**: Google Fonts (system default with fallback)
+- **Heading**: Bold, larger sizes (20-32px)
+- **Body**: Regular weight, readable sizes (14-16px)
+- **Caption**: Smaller, muted colors (12px)
 
-### UI Components
-- Modern Material Design 3
-- Rounded corners (12-16px borders)
-- Soft shadows for depth
-- Gradient backgrounds for headers
-- Icon-based navigation
+## 🗄️ Database Schema
 
-## Getting Started
+### Users Table (Supabase Auth)
+```sql
+-- Extended user profile table
+CREATE TABLE users (
+  id UUID PRIMARY KEY REFERENCES auth.users(id),
+  email VARCHAR NOT NULL,
+  name VARCHAR,
+  location VARCHAR,
+  profile_image_url TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### Plants Table
+```sql
+CREATE TABLE plants (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  plant_name VARCHAR(255) NOT NULL,
+  scientific_name VARCHAR(255),
+  nickname VARCHAR(255),
+  image_url TEXT,
+  confidence FLOAT,
+  care_water TEXT,
+  care_sunlight TEXT,
+  care_temperature TEXT,
+  health_status VARCHAR(50) DEFAULT 'healthy',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- RLS Policies
+ALTER TABLE plants ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can view own plants"
+ON plants FOR SELECT
+USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can insert own plants"
+ON plants FOR INSERT
+WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users can update own plants"
+ON plants FOR UPDATE
+USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can delete own plants"
+ON plants FOR DELETE
+USING (auth.uid() = user_id);
+```
+
+### Storage Buckets
+- **plant-images/**: Plant photos uploaded by users
+- **profile-pictures/**: User profile pictures
+- **disease-reports/**: Plant disease documentation
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Flutter SDK 3.10.7 or higher
-- Android SDK
-- Android Studio or VS Code with Flutter extension
+- Flutter SDK 3.38.6 or higher
+- Dart SDK 3.10.7 or higher
+- Supabase account
+- Plant.id API key (optional, for plant identification)
 
 ### Installation
 
@@ -157,189 +238,290 @@ The app uses the following key packages:
    flutter pub get
    ```
 
-3. **Run the app**
-   ```bash
-   flutter run
+3. **Configure Supabase**
+   - Create a project at https://supabase.com
+   - Copy your project URL and anon key
+   - Update `lib/main.dart` with your credentials:
+   ```dart
+   await Supabase.initialize(
+     url: 'YOUR_SUPABASE_URL',
+     anonKey: 'YOUR_SUPABASE_ANON_KEY',
+   );
    ```
 
-### Build for Android
+4. **Set up Database**
+   - Go to Supabase SQL Editor
+   - Run the SQL scripts above to create tables
+   - Create storage buckets: `plant-images`, `profile-pictures`, `disease-reports`
 
-**Debug APK:**
+5. **Configure Plant.id API (Optional)**
+   - Get API key from https://plant.id
+   - Update `lib/services/plant_identification_service.dart`:
+   ```dart
+   static const String _plantIdApiKey = 'YOUR_API_KEY_HERE';
+   ```
+
+6. **Run the app**
+   ```bash
+   flutter run -d chrome  # For web
+   flutter run            # For mobile/Android
+   ```
+
+### Build for Production
+
+**Web:**
 ```bash
-flutter build apk --debug
+flutter build web --release
 ```
 
-**Release APK:**
+**Android APK:**
 ```bash
 flutter build apk --release
 ```
 
-The APK will be generated in `build/app/outputs/apk/`
+**Android App Bundle:**
+```bash
+flutter build appbundle --release
+```
 
-## Backend Integration Notes
+## 📱 Usage Guide
 
-The app is currently built with mock data. To integrate with a real backend:
+### Getting Started
+1. **Sign Up**: Create a new account with email and password
+2. **Login**: Access your dashboard
+3. **Add Plants**: Click "Add Plant" → Select image → AI identifies → Save
+4. **View Plants**: Browse your plant library on home screen
+5. **Monitor Health**: Track plant health status and care tips
+6. **Update Profile**: Customize profile with photo and details
 
-### API Endpoints to Implement:
+### Key Workflows
 
-1. **Authentication**
-   - `POST /api/auth/login`
-   - `POST /api/auth/register`
-   - `POST /api/auth/logout`
+#### Adding a Plant
+```
+Home → "Add Plant" Button → Select Image (Camera/Gallery) → 
+"Identify Plant" → View Results → Edit Nickname → "Add Plant" → Success!
+```
 
-2. **Plant Management**
-   - `GET /api/plants` - Get all user plants
-   - `POST /api/plants` - Add new plant
-   - `GET /api/plants/:id` - Get plant details
-   - `PUT /api/plants/:id` - Update plant
-   - `DELETE /api/plants/:id` - Delete plant
+#### Managing Profile
+```
+Profile Tab → "Edit Profile" → Update name/location → 
+Upload Photo → "Change Password" (optional) → Save
+```
 
-3. **Disease Detection**
-   - `POST /api/plants/analyze` - Upload image for analysis
-   - `GET /api/diseases/:id` - Get disease information
+#### Viewing Plant Details
+```
+Home → Click Plant Card → View Details →
+See care info, health status, confidence score
+```
 
-4. **Maintenance Tasks**
-   - `GET /api/tasks` - Get all tasks
-   - `POST /api/tasks` - Create task
-   - `PUT /api/tasks/:id` - Update task
-   - `DELETE /api/tasks/:id` - Delete task
+## 🔧 Known Issues & Solutions
 
-5. **Weather Data**
-   - `GET /api/weather` - Get current weather
-   - `GET /api/weather/forecast` - Get 5-day forecast
+### Issue 1: Profile Updates Not Saving
+**Problem**: Profile updates don't persist in Supabase  
+**Cause**: RLS (Row Level Security) policies blocking UPDATE  
+**Solution**:
+```sql
+-- Create UPDATE policy in Supabase
+CREATE POLICY "Users can update own profile"
+ON users FOR UPDATE
+USING (auth.uid() = id)
+WITH CHECK (auth.uid() = id);
+```
 
-### Making API Calls
+### Issue 2: Plant Identification Requires API Key
+**Problem**: Plant identification fails  
+**Cause**: Missing Plant.id API key  
+**Solution**: Get free API key from https://plant.id and configure in `plant_identification_service.dart`
 
-Replace mock data in providers with HTTP requests:
+### Issue 3: Image Display on Web
+**Problem**: `Image.file()` not supported on web  
+**Solution**: ✅ Already fixed - uses `Image.memory()` with `FutureBuilder`
 
-```dart
-// Example in plant_provider.dart
-Future<void> fetchPlants() async {
-  try {
-    final response = await http.get(
-      Uri.parse('https://your-api.com/api/plants'),
-      headers: {'Authorization': 'Bearer $authToken'},
-    );
-    if (response.statusCode == 200) {
-      // Parse and update plants list
-      notifyListeners();
-    }
-  } catch (e) {
-    print('Error: $e');
-  }
+## 🧪 Testing
+
+### Test User
+- **Email**: shahma@gmail.com
+- **Password**: (your configured password)
+
+### Test Scenarios
+1. ✅ Login/Logout
+2. ✅ Profile update (name, location)
+3. ✅ Password change
+4. ✅ Image upload (profile picture)
+5. ✅ Navigation between screens
+6. ⚠️ Plant identification (requires API key)
+7. ⚠️ Plant storage (requires database setup)
+
+### Mock Data
+The app includes sample data for testing:
+- 3 demo plants (displayed on home screen)
+- Health status indicators
+- Sample maintenance tasks
+
+## 📊 State Management
+
+The app uses **Provider** pattern for state management with 3 main providers:
+
+### Providers
+
+**1. AuthProvider** (`lib/providers/auth_provider.dart`)
+- Manages user authentication state
+- Handles login, signup, logout
+- Profile updates and password changes
+- Session persistence
+
+**2. PlantProvider** (`lib/providers/plant_provider.dart`)
+- Manages plant data
+- CRUD operations for plants
+- Plant health status tracking
+- Mock data for testing
+
+**3. MaintenanceProvider** (`lib/providers/maintenance_provider.dart`)
+- Manages maintenance tasks
+- Task scheduling
+- Task filtering (pending/completed)
+
+### Navigation (GoRouter)
+- 12 routes configured
+- Declarative routing with deep linking
+- Bottom navigation: Home, Plants, Weather, Profile
+- Proper navigation stack with `context.push()` and `context.pop()`
+
+## 🚧 Future Enhancements
+
+### Planned Features
+- [ ] Real-time weather integration with API
+- [ ] Disease detection with ML model
+- [ ] Maintenance task notifications
+- [ ] Crop yield tracking
+- [ ] Community features (share plants, tips)
+- [ ] Offline mode support
+- [ ] Multi-language support
+- [ ] Dark mode theme
+- [ ] IoT sensor integration
+- [ ] Analytics dashboard
+
+### Technical Improvements
+- [ ] Unit tests coverage
+- [ ] Integration tests
+- [ ] Performance optimization
+- [ ] Error tracking (Sentry/Firebase Crashlytics)
+- [ ] Analytics integration (Firebase/Mixpanel)
+
+## 📖 API Documentation
+
+### Plant.id API
+**Endpoint**: `https://api.plant.id/v2/identify`
+
+**Request**:
+```json
+{
+  "images": ["base64_encoded_image"],
+  "modifiers": ["similar_images"],
+  "plant_details": [
+    "watering",
+    "sunlight",
+    "propagation_methods",
+    "common_names",
+    "description"
+  ]
 }
 ```
 
-## Features To Be Implemented
+**Response**:
+```json
+{
+  "plant_name": "Tomato",
+  "scientific_name": "Solanum lycopersicum",
+  "confidence": 95.5,
+  "watering": "Regular watering required",
+  "sunlight": "Full sun (6-8 hours)",
+  "temperature": "18-27°C"
+}
+```
 
-The following features are currently using mock data and require backend integration:
+## 🛡️ Security Features
 
-1. **Image Analysis with ML**
-   - Integrate with TensorFlow or ML Kit for disease detection
-   - Train CNN model for plant disease classification
+- ✅ Row Level Security (RLS) on all tables
+- ✅ User-specific data isolation
+- ✅ Secure authentication with Supabase
+- ✅ Password hashing (handled by Supabase)
+- ✅ Session management
+- ✅ Storage access control
+- ✅ Environment variable protection
 
-2. **Real-time Weather API**
-   - Integrate with OpenWeatherMap or similar service
-   - Real-time location-based weather
+## 📝 Development Notes
 
-3. **Push Notifications**
-   - Task reminders
-   - Weather alerts
-   - Plant health warnings
+### Navigation Pattern
+- Use `context.push()` for feature screens (creates navigation stack)
+- Use `context.go()` only for home route (replaces current route)
+- Always check `context.canPop()` before calling `context.pop()`
 
-4. **Database**
-   - User authentication and authorization
-   - Plant data storage
-   - Historical records
-   - Image storage
+### Image Handling
+- **Web**: Use `Image.memory()` with `FutureBuilder` for async loading
+- **Mobile**: Can use `Image.file()` directly
+- Always handle loading states
 
-5. **Cloud Storage**
-   - Plant images
-   - User profiles
-   - Backup and sync
+### Error Handling
+- All API calls wrapped in try-catch
+- User-friendly error messages via SnackBar
+- Console logging for debugging (`print()` statements)
+- Comprehensive error states in UI
 
-## Testing
+## 🔗 Resources & Links
 
-### Mock Data Structure
+- **Supabase Dashboard**: https://app.supabase.com
+- **Project URL**: https://uasqfoyqkrstkbfqphgd.supabase.co
+- **Plant.id API**: https://plant.id
+- **Flutter Documentation**: https://docs.flutter.dev
+- **Material Design 3**: https://m3.material.io
+- **Provider Package**: https://pub.dev/packages/provider
+- **GoRouter Package**: https://pub.dev/packages/go_router
 
-The app includes pre-populated mock data for testing:
-- 3 sample plants (Tomato, Rose, Basil)
-- 3 maintenance tasks
-- Sample weather data
-
-### Test Credentials
-
-- Email: `test@agrocare.com`
-- Password: `123456`
-
-## Architecture
-
-### State Management (Provider)
-- **AuthProvider**: Manages user authentication state
-- **PlantProvider**: Manages all plant data
-- **MaintenanceProvider**: Manages maintenance tasks
-
-### Navigation (GoRouter)
-- Declarative routing with deep linking support
-- Bottom navigation between main sections
-- Stack-based navigation for detail screens
-
-## Future Enhancements
-
-1. **Machine Learning**
-   - On-device disease detection model
-   - Crop yield prediction
-   - Optimal harvest timing
-
-2. **Community Features**
-   - Share experiences with other farmers
-   - Community Q&A
-   - Expert advice channel
-
-3. **IoT Integration**
-   - Connect with soil moisture sensors
-   - Weather station integration
-   - Automated watering systems
-
-4. **Multi-language Support**
-   - Regional language support
-   - Localized recommendations
-
-5. **Analytics Dashboard**
-   - Advanced crop analytics
-   - Production trends
-   - Resource optimization
-
-## Troubleshooting
+## 🐛 Troubleshooting
 
 ### Common Issues
 
 **Issue: App crashes on startup**
-- Solution: Run `flutter clean` and `flutter pub get` again
+- Solution: Run `flutter clean` && `flutter pub get`
+
+**Issue: Supabase connection fails**
+- Solution: Verify URL and anon key in `main.dart`
 
 **Issue: Images not displaying**
-- Solution: Check image asset paths and ensure internet connectivity
+- Solution: Check internet connectivity and storage bucket permissions
 
 **Issue: Provider state not updating**
-- Solution: Ensure all consumers are wrapped properly and providers are declared in main.dart
+- Solution: Ensure `notifyListeners()` is called after state changes
 
-## Contributing
+**Issue: "Unsupported operation: _Namespace" on web**
+- Solution: ✅ Already fixed - using `Image.memory()` instead of `Image.file()`
 
-For backend API development, follow these guidelines:
-- RESTful API design
-- JSON response format
-- Proper error handling
-- Authentication using JWT
+## 🤝 Contributing
 
-## License
+This is an educational project. Areas for contribution:
+1. Bug fixes
+2. UI/UX improvements
+3. New feature implementations
+4. Documentation updates
+5. Test coverage improvements
+
+## 📄 License
 
 This project is developed for educational purposes.
 
-## Support
+## 👥 Credits
 
-For issues or questions:
-- Check the Flutter documentation: https://flutter.dev
-- Review the GoRouter documentation: https://pub.dev/packages/go_router
+**Project**: AgroCare Agriculture Management App  
+**Built with**: Flutter & Supabase  
+**AI Integration**: Plant.id API  
+**Developer**: Learning Project
+
+---
+
+**Last Updated**: January 14, 2026  
+**Version**: 1.0.0  
+**Status**: Active Development ✨
 - Consult Provider documentation: https://pub.dev/packages/provider
 
 ---

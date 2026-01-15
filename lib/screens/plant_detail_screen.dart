@@ -23,7 +23,11 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Plant Details',
-        onLeadingPressed: () => context.pop(),
+        onLeadingPressed: () {
+          if (context.canPop()) {
+            context.pop();
+          }
+        },
       ),
       body: Consumer2<PlantProvider, MaintenanceProvider>(
         builder: (context, plantProvider, maintenanceProvider, _) {
@@ -62,7 +66,7 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                plant.name,
+                                plant.plantName,
                                 style: Theme.of(context)
                                     .textTheme
                                     .displaySmall!
@@ -70,7 +74,7 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                plant.type,
+                                plant.scientificName ?? 'Unknown species',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge!
@@ -87,10 +91,36 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
                       const SizedBox(height: 20),
 
                       // Health Status
-                      HealthStatusIndicator(
-                        status: plant.healthStatus,
-                        disease: plant.disease,
-                        symptoms: plant.symptoms,
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: plant.healthStatus == 'healthy'
+                              ? Colors.green.withOpacity(0.1)
+                              : Colors.yellow.withOpacity(0.1),
+                          border: Border.all(
+                            color: plant.healthStatus == 'healthy'
+                                ? Colors.green
+                                : Colors.yellow,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              plant.healthStatus == 'healthy'
+                                  ? Icons.check_circle
+                                  : Icons.warning,
+                              color: plant.healthStatus == 'healthy'
+                                  ? Colors.green
+                                  : Colors.yellow,
+                            ),
+                            const SizedBox(width: 12),
+                            Text(
+                              '${plant.healthStatus.toUpperCase()} Plant',
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 20),
 
@@ -104,22 +134,22 @@ class _PlantDetailScreenState extends State<PlantDetailScreen> {
                         children: [
                           _buildInfoTile(
                             context,
-                            'Days Old',
-                            '${plant.daysGrown}',
-                            Icons.calendar_today_outlined,
+                            'Confidence',
+                            '${plant.confidence.toStringAsFixed(1)}%',
+                            Icons.verified,
                           ),
                           _buildInfoTile(
                             context,
-                            'Planted',
-                            formatDate(plant.plantedDate),
+                            'Added',
+                            formatDate(plant.createdAt ?? DateTime.now()),
                             Icons.date_range_outlined,
                           ),
-                          if (plant.location != null)
+                          if (plant.careWater != null)
                             _buildInfoTile(
                               context,
-                              'Location',
-                              plant.location!,
-                              Icons.location_on_outlined,
+                              'Watering',
+                              plant.careWater ?? 'Not specified',
+                              Icons.opacity,
                             ),
                           _buildInfoTile(
                             context,

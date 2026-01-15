@@ -18,7 +18,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Profile',
-        onLeadingPressed: () => context.pop(),
+        onLeadingPressed: () {
+          // Check if there's a route to pop
+          if (context.canPop()) {
+            context.pop();
+          } else {
+            // If no route to pop, go to home
+            context.go('/home');
+          }
+        },
       ),
       body: Consumer<AuthProvider>(
         builder: (context, authProvider, _) {

@@ -21,7 +21,11 @@ class _MaintenanceSchedulerScreenState extends State<MaintenanceSchedulerScreen>
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Maintenance Schedule',
-        onLeadingPressed: () => context.pop(),
+        onLeadingPressed: () {
+          if (context.canPop()) {
+            context.pop();
+          }
+        },
       ),
       body: Consumer<MaintenanceProvider>(
         builder: (context, maintenanceProvider, _) {

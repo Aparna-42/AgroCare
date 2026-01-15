@@ -1,30 +1,30 @@
 class Plant {
   final String id;
   final String userId;
-  final String name;
-  final String type;
+  final String plantName;
+  final String? scientificName;
+  final String? nickname;
   final String? imageUrl;
-  final DateTime plantedDate;
+  final double confidence;
+  final String? careWater;
+  final String? careSunlight;
+  final String? careTemperature;
   final String healthStatus; // healthy, warning, critical
-  final List<String> symptoms;
-  final String? disease;
-  final String? location;
-  final int daysGrown;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
   Plant({
     required this.id,
     required this.userId,
-    required this.name,
-    required this.type,
+    required this.plantName,
+    this.scientificName,
+    this.nickname,
     this.imageUrl,
-    required this.plantedDate,
-    required this.healthStatus,
-    required this.symptoms,
-    this.disease,
-    this.location,
-    required this.daysGrown,
+    required this.confidence,
+    this.careWater,
+    this.careSunlight,
+    this.careTemperature,
+    this.healthStatus = 'healthy',
     this.createdAt,
     this.updatedAt,
   });
@@ -34,19 +34,15 @@ class Plant {
     return Plant(
       id: json['id'] ?? '',
       userId: json['user_id'] ?? '',
-      name: json['name'] ?? 'Plant',
-      type: json['type'] ?? 'Unknown',
+      plantName: json['plant_name'] ?? 'Plant',
+      scientificName: json['scientific_name'],
+      nickname: json['nickname'],
       imageUrl: json['image_url'],
-      plantedDate: json['planted_date'] != null 
-          ? DateTime.parse(json['planted_date']) 
-          : DateTime.now(),
+      confidence: (json['confidence'] as num?)?.toDouble() ?? 0.0,
+      careWater: json['care_water'],
+      careSunlight: json['care_sunlight'],
+      careTemperature: json['care_temperature'],
       healthStatus: json['health_status'] ?? 'healthy',
-      symptoms: json['symptoms'] != null 
-          ? (json['symptoms'] as String).split(',').map((s) => s.trim()).toList()
-          : [],
-      disease: json['disease'],
-      location: json['location'],
-      daysGrown: json['days_grown'] ?? 0,
       createdAt: json['created_at'] != null 
           ? DateTime.parse(json['created_at']) 
           : null,
@@ -59,46 +55,49 @@ class Plant {
   // Convert to JSON for Supabase
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'user_id': userId,
-      'name': name,
-      'type': type,
+      'plant_name': plantName,
+      'scientific_name': scientificName,
+      'nickname': nickname,
       'image_url': imageUrl,
-      'planted_date': plantedDate.toIso8601String().split('T')[0],
+      'confidence': confidence,
+      'care_water': careWater,
+      'care_sunlight': careSunlight,
+      'care_temperature': careTemperature,
       'health_status': healthStatus,
-      'symptoms': symptoms.join(','),
-      'disease': disease,
-      'location': location,
-      'days_grown': daysGrown,
+      'created_at': createdAt?.toIso8601String(),
+      'updated_at': updatedAt?.toIso8601String(),
     };
   }
 
   Plant copyWith({
     String? id,
     String? userId,
-    String? name,
-    String? type,
+    String? plantName,
+    String? scientificName,
+    String? nickname,
     String? imageUrl,
-    DateTime? plantedDate,
+    double? confidence,
+    String? careWater,
+    String? careSunlight,
+    String? careTemperature,
     String? healthStatus,
-    List<String>? symptoms,
-    String? disease,
-    String? location,
-    int? daysGrown,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
     return Plant(
       id: id ?? this.id,
       userId: userId ?? this.userId,
-      name: name ?? this.name,
-      type: type ?? this.type,
+      plantName: plantName ?? this.plantName,
+      scientificName: scientificName ?? this.scientificName,
+      nickname: nickname ?? this.nickname,
       imageUrl: imageUrl ?? this.imageUrl,
-      plantedDate: plantedDate ?? this.plantedDate,
+      confidence: confidence ?? this.confidence,
+      careWater: careWater ?? this.careWater,
+      careSunlight: careSunlight ?? this.careSunlight,
+      careTemperature: careTemperature ?? this.careTemperature,
       healthStatus: healthStatus ?? this.healthStatus,
-      symptoms: symptoms ?? this.symptoms,
-      disease: disease ?? this.disease,
-      location: location ?? this.location,
-      daysGrown: daysGrown ?? this.daysGrown,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );

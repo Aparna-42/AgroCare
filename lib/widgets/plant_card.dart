@@ -72,7 +72,7 @@ class PlantCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              plant.name,
+                              plant.plantName,
                               style:
                                   Theme.of(context).textTheme.titleLarge!.copyWith(
                                         fontWeight: FontWeight.w600,
@@ -82,7 +82,7 @@ class PlantCard extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              plant.type,
+                              plant.scientificName ?? 'Unknown species',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall!
@@ -110,13 +110,13 @@ class PlantCard extends StatelessWidget {
                   Row(
                     children: [
                       Icon(
-                        Icons.calendar_today_outlined,
+                        Icons.verified,
                         size: 14,
                         color: textGray,
                       ),
                       const SizedBox(width: 6),
                       Text(
-                        '${plant.daysGrown} days old',
+                        '${plant.confidence.toStringAsFixed(1)}% confidence',
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall!

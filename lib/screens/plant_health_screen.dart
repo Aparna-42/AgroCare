@@ -19,7 +19,11 @@ class _PlantHealthScreenState extends State<PlantHealthScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Plant Health Analysis',
-        onLeadingPressed: () => context.pop(),
+        onLeadingPressed: () {
+          if (context.canPop()) {
+            context.pop();
+          }
+        },
       ),
       body: SingleChildScrollView(
         child: Padding(

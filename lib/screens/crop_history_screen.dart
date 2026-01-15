@@ -14,7 +14,11 @@ class CropHistoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Crop History',
-        onLeadingPressed: () => context.pop(),
+        onLeadingPressed: () {
+          if (context.canPop()) {
+            context.pop();
+          }
+        },
       ),
       body: Consumer<PlantProvider>(
         builder: (context, plantProvider, _) {

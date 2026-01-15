@@ -11,7 +11,11 @@ class WeatherAdvisoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Weather Advisory',
-        onLeadingPressed: () => context.pop(),
+        onLeadingPressed: () {
+          if (context.canPop()) {
+            context.pop();
+          }
+        },
       ),
       body: SingleChildScrollView(
         child: Column(

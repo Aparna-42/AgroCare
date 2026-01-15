@@ -9,6 +9,7 @@ import '../screens/maintenance_scheduler_screen.dart';
 import '../screens/weather_advisory_screen.dart';
 import '../screens/crop_history_screen.dart';
 import '../screens/profile_screen.dart';
+import '../screens/add_plant_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/',
@@ -55,6 +56,10 @@ final router = GoRouter(
     GoRoute(
       path: '/profile',
       builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      path: '/add-plant',
+      builder: (context, state) => const AddPlantScreen(),
     ),
   ],
 );

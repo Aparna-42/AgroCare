@@ -62,6 +62,9 @@ dependencies:
   
   # Supabase Backend
   supabase_flutter: ^1.10.0
+  
+  # UUID generation
+  uuid: ^4.0.0
 
 dev_dependencies:
   flutter_test:
