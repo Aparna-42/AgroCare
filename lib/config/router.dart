@@ -10,6 +10,7 @@ import '../screens/weather_advisory_screen.dart';
 import '../screens/crop_history_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/add_plant_screen.dart';
+import '../screens/plant_disease_detection_screen.dart';
 
 final router = GoRouter(
   initialLocation: '/',
@@ -60,6 +61,10 @@ final router = GoRouter(
     GoRoute(
       path: '/add-plant',
       builder: (context, state) => const AddPlantScreen(),
+    ),
+    GoRoute(
+      path: '/disease-detection',
+      builder: (context, state) => const PlantDiseaseDetectionScreen(),
     ),
   ],
 );

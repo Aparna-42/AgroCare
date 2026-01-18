@@ -93,6 +93,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               _buildFeatureButton(
                                 context,
+                                'Disease Check',
+                                Icons.pest_control,
+                                () => context.push('/disease-detection'),
+                              ),
+                              _buildFeatureButton(
+                                context,
                                 'Plant Health',
                                 Icons.image_search,
                                 () => context.push('/plant-health'),
@@ -102,12 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 'Maintenance',
                                 Icons.schedule,
                                 () => context.push('/maintenance'),
-                              ),
-                              _buildFeatureButton(
-                                context,
-                                'Weather',
-                                Icons.cloud,
-                                () => context.push('/weather'),
                               ),
                             ],
                           ),
