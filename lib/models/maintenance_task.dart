@@ -1,8 +1,17 @@
+/// Maintenance Task Model
+/// 
+/// Represents a scheduled maintenance activity for a specific plant.
+/// Tasks are generated automatically based on plant care requirements
+/// and user availability settings. Supports multiple task types and
+/// tracks completion status.
 class MaintenanceTask {
   final String id;
   final String userId;
   final String plantId;
-  final String taskType; // watering, fertilization, pruning, etc
+  
+  /// Task type: 'watering', 'fertilization', 'pruning', 'pest_check', etc.
+  final String taskType;
+  
   final String description;
   final DateTime scheduledDate;
   final DateTime? completedDate;
