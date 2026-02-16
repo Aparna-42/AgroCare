@@ -12,6 +12,15 @@
 .swiftpm/
 migrate_working_dir/
 
+# API Keys and Secrets - DO NOT COMMIT
+API_KEYS_SETUP.md
+lib/config/supabase_config.dart
+lib/config/env_config.dart
+*.env
+.env
+.env.local
+secrets.dart
+
 # IntelliJ related
 *.iml
 *.ipr
