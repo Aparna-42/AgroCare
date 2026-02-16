@@ -52,3 +52,23 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Test Coverage
+coverage/
+test/.test_coverage.dart
+lcov.info
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.mocks.dart
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Build artifacts
+*.apk
+*.ipa
+*.aab
