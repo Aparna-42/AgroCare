@@ -75,3 +75,24 @@ String getRelativeTime(DateTime date) {
     return 'just now';
   }
 }
+
+/// Calculate days remaining until a scheduled date
+String getDaysUntil(DateTime targetDate) {
+  final now = DateTime.now();
+  final difference = targetDate.difference(now);
+  
+  if (difference.inDays == 0) {
+    return 'Today';
+  } else if (difference.inDays == 1) {
+    return 'Tomorrow';
+  } else if (difference.inDays < 0) {
+    return 'Overdue';
+  } else {
+    return 'In ${difference.inDays} days';
+  }
+}
+
+/// Format confidence score as percentage string
+String formatConfidence(double confidence) {
+  return '${confidence.toStringAsFixed(1)}%';
+}
