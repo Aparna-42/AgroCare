@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// AgroCare Theme Configuration
+/// 
+/// Material Design 3 theme with agricultural color palette
+/// Primary focus: Green tones representing growth and nature
+/// Typography: Google Fonts Poppins for modern, clean look
+
+// === Color Palette ===
+
+// Primary Colors - Green Theme
 const Color primaryGreen = Color(0xFF2D7A3E);
 const Color accentGreen = Color(0xFF4CAF50);
 const Color lightGreen = Color(0xFFE8F5E9);
 const Color darkGreen = Color(0xFF1B5E20);
+
+// Accent Colors
 const Color warmBrown = Color(0xFF8D6E63);
+
+// Neutral Colors
 const Color textDark = Color(0xFF1A1A1A);
 const Color textGray = Color(0xFF757575);
 const Color lightGray = Color(0xFFF5F5F5);
 const Color white = Color(0xFFFFFFFF);
+
+// Status Colors
 const Color errorRed = Color(0xFFE53935);
 const Color successGreen = Color(0xFF4CAF50);
 const Color warningOrange = Color(0xFFFFA726);
