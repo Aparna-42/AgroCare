@@ -1,0 +1,14 @@
+Apple: Apple_scab, Black_rot, Cedar_apple_rust
+Blueberry: 
+Cherry (including_sour): Powdery_mildew
+Corn (maize): Cercospora_leaf_spot Gray_leaf_spot, Common_rust_, Northern_Leaf_Blight
+Grape: Black_rot, Esca_(Black_Measles), Leaf_blight_(Isariopsis_Leaf_Spot)
+Orange: Haunglongbing_(Citrus_greening)
+Peach: Bacterial_spot
+Pepper, bell: Bacterial_spot
+Potato: Early_blight, Late_blight
+Raspberry: 
+Soybean: 
+Squash: Powdery_mildew
+Strawberry: Leaf_scorch
+Tomato: Bacterial_spot, Early_blight, Late_blight, Leaf_Mold, Septoria_leaf_spot, Spider_mites Two-spotted_spider_mite, Target_Spot, Tomato_mosaic_virus, Tomato_Yellow_Leaf_Curl_Virus

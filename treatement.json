@@ -1,0 +1,290 @@
+{
+  "plant_disease_treatment": [
+    {
+      "plant_name": "Apple",
+      "disease_name": "Apple_scab",
+      "treatment_suggestions": [
+        "Remove and destroy fallen leaves to prevent fungal spread.",
+        "Apply fungicides like captan or myclobutanil during early growth.",
+        "Prune trees to improve air circulation.",
+        "Avoid overhead watering.",
+        "Plant resistant apple varieties when possible."
+      ]
+    },
+    {
+      "plant_name": "Apple",
+      "disease_name": "Black_rot",
+      "treatment_suggestions": [
+        "Prune infected branches and remove mummified fruits.",
+        "Apply copper-based fungicides.",
+        "Disinfect pruning tools after use.",
+        "Maintain proper tree spacing.",
+        "Remove dead wood regularly."
+      ]
+    },
+    {
+      "plant_name": "Apple",
+      "disease_name": "Cedar_apple_rust",
+      "treatment_suggestions": [
+        "Remove nearby cedar or juniper hosts if possible.",
+        "Use preventive fungicide sprays in spring.",
+        "Plant resistant cultivars.",
+        "Improve airflow through pruning.",
+        "Monitor trees regularly for early signs."
+      ]
+    },
+    {
+      "plant_name": "Cherry (including_sour)",
+      "disease_name": "Powdery_mildew",
+      "treatment_suggestions": [
+        "Apply sulfur-based fungicides.",
+        "Ensure good air circulation around plants.",
+        "Avoid excessive nitrogen fertilizers.",
+        "Remove infected leaves promptly.",
+        "Water plants at the base to keep foliage dry."
+      ]
+    },
+    {
+      "plant_name": "Corn (maize)",
+      "disease_name": "Cercospora_leaf_spot Gray_leaf_spot",
+      "treatment_suggestions": [
+        "Use resistant corn hybrids.",
+        "Rotate crops yearly.",
+        "Apply foliar fungicides when disease risk is high.",
+        "Remove crop residues after harvest.",
+        "Avoid dense planting."
+      ]
+    },
+    {
+      "plant_name": "Corn (maize)",
+      "disease_name": "Common_rust_",
+      "treatment_suggestions": [
+        "Plant resistant varieties.",
+        "Apply fungicides if infection is severe.",
+        "Monitor fields regularly.",
+        "Maintain balanced fertilization.",
+        "Avoid late planting."
+      ]
+    },
+    {
+      "plant_name": "Corn (maize)",
+      "disease_name": "Northern_Leaf_Blight",
+      "treatment_suggestions": [
+        "Use resistant hybrids.",
+        "Practice crop rotation.",
+        "Apply fungicides early if detected.",
+        "Remove infected debris.",
+        "Ensure proper plant spacing."
+      ]
+    },
+    {
+      "plant_name": "Grape",
+      "disease_name": "Black_rot",
+      "treatment_suggestions": [
+        "Remove infected berries and leaves.",
+        "Apply fungicides from early season.",
+        "Prune vines to improve airflow.",
+        "Keep the vineyard clean.",
+        "Avoid overhead irrigation."
+      ]
+    },
+    {
+      "plant_name": "Grape",
+      "disease_name": "Esca_(Black_Measles)",
+      "treatment_suggestions": [
+        "Remove and destroy infected wood.",
+        "Protect pruning wounds with sealant.",
+        "Avoid excessive irrigation.",
+        "Maintain vine health with balanced nutrients.",
+        "Replant severely affected vines."
+      ]
+    },
+    {
+      "plant_name": "Grape",
+      "disease_name": "Leaf_blight_(Isariopsis_Leaf_Spot)",
+      "treatment_suggestions": [
+        "Apply recommended fungicides.",
+        "Remove infected leaves.",
+        "Improve air circulation.",
+        "Avoid wet foliage.",
+        "Use disease-free planting material."
+      ]
+    },
+    {
+      "plant_name": "Orange",
+      "disease_name": "Haunglongbing_(Citrus_greening)",
+      "treatment_suggestions": [
+        "Remove infected trees immediately.",
+        "Control psyllid insects using insecticides.",
+        "Use certified disease-free plants.",
+        "Apply balanced fertilizers.",
+        "Monitor orchards frequently."
+      ]
+    },
+    {
+      "plant_name": "Peach",
+      "disease_name": "Bacterial_spot",
+      "treatment_suggestions": [
+        "Apply copper sprays during dormancy.",
+        "Plant resistant varieties.",
+        "Avoid overhead irrigation.",
+        "Prune infected branches.",
+        "Ensure good airflow."
+      ]
+    },
+    {
+      "plant_name": "Pepper, bell",
+      "disease_name": "Bacterial_spot",
+      "treatment_suggestions": [
+        "Use certified disease-free seeds.",
+        "Apply copper-based bactericides.",
+        "Rotate crops every season.",
+        "Avoid working with wet plants.",
+        "Remove infected plants quickly."
+      ]
+    },
+    {
+      "plant_name": "Potato",
+      "disease_name": "Early_blight",
+      "treatment_suggestions": [
+        "Apply fungicides like chlorothalonil.",
+        "Rotate crops for 2–3 years.",
+        "Remove infected foliage.",
+        "Maintain proper plant nutrition.",
+        "Avoid overhead watering."
+      ]
+    },
+    {
+      "plant_name": "Potato",
+      "disease_name": "Late_blight",
+      "treatment_suggestions": [
+        "Use certified disease-free seed potatoes.",
+        "Apply preventive fungicides.",
+        "Destroy infected plants immediately.",
+        "Improve field drainage.",
+        "Avoid excess moisture."
+      ]
+    },
+    {
+      "plant_name": "Squash",
+      "disease_name": "Powdery_mildew",
+      "treatment_suggestions": [
+        "Apply sulfur or potassium bicarbonate sprays.",
+        "Provide adequate plant spacing.",
+        "Remove infected leaves.",
+        "Avoid excess nitrogen fertilizer.",
+        "Plant resistant varieties."
+      ]
+    },
+    {
+      "plant_name": "Strawberry",
+      "disease_name": "Leaf_scorch",
+      "treatment_suggestions": [
+        "Remove infected leaves.",
+        "Apply appropriate fungicides.",
+        "Improve air circulation.",
+        "Avoid overhead irrigation.",
+        "Use healthy transplants."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Bacterial_spot",
+      "treatment_suggestions": [
+        "Use disease-free seeds.",
+        "Apply copper sprays.",
+        "Rotate crops regularly.",
+        "Avoid handling wet plants.",
+        "Remove infected debris."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Early_blight",
+      "treatment_suggestions": [
+        "Apply fungicides promptly.",
+        "Stake plants to improve airflow.",
+        "Remove lower infected leaves.",
+        "Mulch soil to prevent splash.",
+        "Rotate crops yearly."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Late_blight",
+      "treatment_suggestions": [
+        "Use resistant varieties.",
+        "Apply preventive fungicides.",
+        "Remove infected plants immediately.",
+        "Avoid overhead watering.",
+        "Ensure good spacing."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Leaf_Mold",
+      "treatment_suggestions": [
+        "Improve greenhouse ventilation.",
+        "Reduce humidity levels.",
+        "Apply fungicides when necessary.",
+        "Avoid wetting leaves.",
+        "Use resistant varieties."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Septoria_leaf_spot",
+      "treatment_suggestions": [
+        "Remove infected leaves.",
+        "Apply fungicides early.",
+        "Mulch to prevent soil splash.",
+        "Rotate crops.",
+        "Avoid overhead watering."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Spider_mites Two-spotted_spider_mite",
+      "treatment_suggestions": [
+        "Spray plants with strong water to remove mites.",
+        "Use insecticidal soap or neem oil.",
+        "Introduce natural predators like ladybugs.",
+        "Maintain adequate humidity.",
+        "Remove heavily infested leaves."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Target_Spot",
+      "treatment_suggestions": [
+        "Apply recommended fungicides.",
+        "Improve air circulation.",
+        "Avoid leaf wetness.",
+        "Remove infected plant material.",
+        "Practice crop rotation."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Tomato_mosaic_virus",
+      "treatment_suggestions": [
+        "Remove infected plants immediately.",
+        "Disinfect gardening tools.",
+        "Avoid tobacco use near plants.",
+        "Control aphids.",
+        "Plant resistant varieties."
+      ]
+    },
+    {
+      "plant_name": "Tomato",
+      "disease_name": "Tomato_Yellow_Leaf_Curl_Virus",
+      "treatment_suggestions": [
+        "Control whiteflies using insecticides or traps.",
+        "Remove infected plants.",
+        "Use virus-resistant varieties.",
+        "Install reflective mulches.",
+        "Maintain field sanitation."
+      ]
+    }
+  ]
+}
