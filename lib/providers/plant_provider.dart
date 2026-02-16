@@ -2,6 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/plant.dart';
 
+/// Plant Provider
+/// 
+/// Manages plant collection state and CRUD operations.
+/// Integrates with Supabase database for persistent storage.
+/// Implements ChangeNotifier for reactive UI updates.
+/// 
+/// Key Features:
+/// - Fetch user's plant collection
+/// - Add new plants with AI identification data
+/// - Update plant information
+/// - Delete plants from collection
+/// - Real-time state management with Provider pattern
 class PlantProvider with ChangeNotifier {
   List<Plant> _plants = [];
   bool _isLoading = false;
@@ -9,9 +21,17 @@ class PlantProvider with ChangeNotifier {
 
   final _supabase = Supabase.instance.client;
 
+  // Public getters
   List<Plant> get plants => _plants;
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
+  
+  /// Get total count of plants
+  int get plantCount => _plants.length;
+  
+  /// Get healthy plants count
+  int get healthyPlantsCount => 
+      _plants.where((p) => p.healthStatus == 'healthy').length;
 
   Future<void> fetchPlants() async {
     try {
