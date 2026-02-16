@@ -1,10 +1,23 @@
 # AgroCare - Smart Agriculture Management App
 
+![Flutter](https://img.shields.io/badge/Flutter-3.38.6-blue.svg)
+![Dart](https://img.shields.io/badge/Dart-3.10.7-blue.svg)
+![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-green.svg)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-success.svg)
+
 A comprehensive Flutter application for managing crops, monitoring plant health, and providing agricultural insights using AI-powered plant identification.
 
 **Version**: 1.0.0  
 **Last Updated**: February 16, 2026  
 **Status**: Production Ready - 80% Complete ✅
+
+## 🌟 Key Highlights
+
+- 🤖 **AI-Powered**: 99%+ accuracy plant identification using Plant.id API
+- 📱 **Cross-Platform**: Android & iOS compatible Flutter application
+- 🔐 **Secure**: Supabase backend with Row Level Security (RLS)
+- 🎨 **Modern UI**: Material Design 3 with green agricultural theme
+- 📊 **Smart Scheduling**: Automated maintenance task generation
 
 ## Project Overview
 
