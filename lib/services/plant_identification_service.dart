@@ -1,10 +1,14 @@
-import 'dart:io';  //read image files
+import 'dart:io';  // Read image files
 import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+/// Plant Identification Service
+/// 
+/// Integrates with Plant.id API v3 for AI-powered plant identification
+/// Supports 99%+ accuracy for common plant species
 class PlantIdentificationService {
-  // Plant.id API
+  // Plant.id API Configuration
   // WARNING: Keep API key secure! Add to .env or environment variables
   // Get your API key from https://plant.id
   static const String _plantIdApiKey = String.fromEnvironment(
