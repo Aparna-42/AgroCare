@@ -1,10 +1,28 @@
+/// User Model
+/// 
+/// Represents an authenticated user in the AgroCare system.
+/// Stores user profile information, location for weather data,
+/// and profile customization settings.
 class User {
+  /// Unique identifier matching auth.users.id
   final String id;
+  
+  /// Display name
   final String name;
+  
+  /// Email address for authentication
   final String email;
+  
+  /// Profile picture URL from storage
   final String? profileImage;
+  
+  /// User location for weather data and plant recommendations
   final String? location;
+  
+  /// Account creation timestamp
   final DateTime? createdAt;
+  
+  /// Last profile update timestamp
   final DateTime? updatedAt;
 
   User({
