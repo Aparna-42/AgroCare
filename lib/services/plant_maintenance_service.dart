@@ -85,8 +85,11 @@ class PlantMaintenanceService {
 
   // Groq API key for AI plant care recommendations
   // Get free API key from: https://console.groq.com
-  // TODO: Store API key securely in environment variables
-  static const String _groqApiKey = 'YOUR_GROQ_API_KEY_HERE';
+  // IMPORTANT: Store API key securely! Use environment variables
+  static const String _groqApiKey = String.fromEnvironment(
+    'GROQ_API_KEY',
+    defaultValue: 'YOUR_GROQ_API_KEY_HERE',
+  );
   static const String _groqBaseUrl = 'https://api.groq.com/openai/v1';
 
   /// Get current weather data from user's location
