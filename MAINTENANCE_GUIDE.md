@@ -191,7 +191,27 @@ The app will automatically create default settings (3 days/week) for new users.
 3. Review upcoming tasks
 4. Adjust settings if needed
 
-## 📈 Advanced Features (Coming Soon)
+## � Best Practices
+
+### Task Completion Tips
+- ✅ **Complete tasks in order** - Prioritize overdue tasks first
+- 📱 **Check daily** - Review tasks each morning for better planning
+- 💧 **Weather check** - Look at weather alerts before watering
+- 📝 **Add notes** - Document any observations for future reference
+
+### Optimization Strategies
+- 🎯 **Set realistic availability** - Start with 3 days/week, adjust as needed
+- 🌱 **Group plants** - Similar plants can share maintenance schedules
+- ⏰ **Best time slots** - Morning tasks work best for watering
+- 📊 **Track patterns** - Monitor which tasks take longest
+
+### Common Mistakes to Avoid
+- ❌ Don't skip pest checks - Early detection prevents major issues
+- ❌ Don't overwater - Follow AI recommendations, not just schedule
+- ❌ Don't ignore weather - Heavy rain means skip watering tasks
+- ❌ Don't forget fertilization - Essential for healthy plant growth
+
+## �📈 Advanced Features (Coming Soon)
 
 - 🔔 Push notifications for daily tasks
 - 📅 Calendar view with all tasks
