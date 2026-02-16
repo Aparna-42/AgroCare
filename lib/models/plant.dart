@@ -1,16 +1,45 @@
+/// Plant Model
+/// 
+/// Represents a plant in the user's collection with AI identification data
+/// and care instructions. Includes health status tracking and maintenance history.
 class Plant {
+  /// Unique identifier for the plant
   final String id;
+  
+  /// Owner's user ID (for RLS security)
   final String userId;
+  
+  /// Common name identified by AI
   final String plantName;
+  
+  /// Scientific/botanical name
   final String? scientificName;
+  
+  /// User-given nickname for the plant
   final String? nickname;
+  
+  /// Cloud storage URL for plant image
   final String? imageUrl;
+  
+  /// AI identification confidence score (0-100)
   final double confidence;
+  
+  /// Watering instructions
   final String? careWater;
+  
+  /// Sunlight requirements
   final String? careSunlight;
+  
+  /// Temperature range preferences
   final String? careTemperature;
-  final String healthStatus; // healthy, warning, critical
+  
+  /// Current health status: 'healthy', 'warning', or 'critical'
+  final String healthStatus;
+  
+  /// Timestamp when plant was added
   final DateTime? createdAt;
+  
+  /// Last update timestamp
   final DateTime? updatedAt;
 
   Plant({
