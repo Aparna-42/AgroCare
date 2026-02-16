@@ -1,5 +1,10 @@
 # 🚀 Quick Start: Plant Maintenance Scheduler
 
+**Last Updated**: February 16, 2026  
+**Feature Status**: ✅ Fully Functional
+
+The Plant Maintenance Scheduler automatically generates weekly tasks for all your plants based on their care requirements and your availability.
+
 ## ⚡ 3-Minute Setup
 
 ### Step 1: Database Setup (1 minute)
